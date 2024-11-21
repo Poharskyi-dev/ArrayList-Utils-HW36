@@ -1,38 +1,81 @@
 package com.gmail.box.avpog;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static com.gmail.box.avpog.Utils.NumberUtils.getSum;
+import static com.gmail.box.avpog.Utils.WordUtils.getShortestWord;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+
+    @Test
+    void isGetShortestWordSimpleTest() {
+        //given
+        ArrayList<String> words = new ArrayList<>(List.of("Fish", "Dog", "Stereolithography"));
+        //when
+        Optional<String> result = getShortestWord(words);
+        //then
+        assertEquals("Dog", result.get());
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    void isGetShortestWordSpaceIgnoring() {
+        //given
+        ArrayList<String> words = new ArrayList<>(List.of("", "Fish", "Dog", "Stereolithography"));
+        //when
+        Optional<String> result = getShortestWord(words);
+        //then
+        assertEquals("Dog", result.get());
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+        // WHY NPE with List.of? Is it on stage where I am creating array?
+    void isGetShortestWordIgnoringNull() {
+        //given
+        ArrayList<String> words = new ArrayList<>(Arrays.asList("", null, "Fish", "Dog", "Stereolithography"));
+        //when
+        Optional<String> result = getShortestWord(words);
+        //then
+        //assert result.isEmpty();
+        //assertTrue(result.isPresent());
+        assertEquals("Dog", result.get());
+    }
+
+    @Test
+        // WHY NPE? Is it on stage where I am creating array?
+    void isGetSumCalculating() {
+        //given
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 5, 10, 15, 50));
+        //when
+        Optional<Integer> result = getSum(numbers);
+        //then
+        //assert result.isEmpty();
+        //assertTrue(result.isPresent());
+        assertEquals(81, result.get());
+    }
+
+    @Test
+    void isGetSumCalculatingNullAndNegative() {
+        //given
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(null, 1, 5, -10, 15, 50));
+        //when
+        Optional<Integer> result = getSum(numbers);
+        //then
+        //assert result.isEmpty();
+        //assertTrue(result.isPresent());
+        assertEquals(61, result.get());
     }
 }
+
+
+
