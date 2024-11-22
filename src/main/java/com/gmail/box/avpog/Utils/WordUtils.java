@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public class WordUtils {
 
-    //@NonNull // CANT ADD
     public static Optional<String> getShortestWord(List<String> words) {
 
         String shortestWord = null;

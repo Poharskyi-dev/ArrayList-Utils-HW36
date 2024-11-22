@@ -10,12 +10,7 @@ import java.util.Optional;
 import static com.gmail.box.avpog.Utils.NumberUtils.getSum;
 import static com.gmail.box.avpog.Utils.WordUtils.getShortestWord;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-/**
- * Unit test for simple App.
- */
 public class AppTest {
 
     @Test
@@ -39,7 +34,6 @@ public class AppTest {
     }
 
     @Test
-        // WHY NPE with List.of? Is it on stage where I am creating array?
     void isGetShortestWordIgnoringNull() {
         //given
         ArrayList<String> words = new ArrayList<>(Arrays.asList("", null, "Fish", "Dog", "Stereolithography"));
