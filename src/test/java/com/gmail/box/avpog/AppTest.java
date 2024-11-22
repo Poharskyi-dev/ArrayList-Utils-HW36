@@ -52,7 +52,6 @@ public class AppTest {
     }
 
     @Test
-        // WHY NPE? Is it on stage where I am creating array?
     void isGetSumCalculating() {
         //given
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 5, 10, 15, 50));
