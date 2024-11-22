@@ -58,8 +58,6 @@ public class AppTest {
         //when
         Optional<Integer> result = getSum(numbers);
         //then
-        //assert result.isEmpty();
-        //assertTrue(result.isPresent());
         assertEquals(81, result.get());
     }
 
@@ -70,8 +68,6 @@ public class AppTest {
         //when
         Optional<Integer> result = getSum(numbers);
         //then
-        //assert result.isEmpty();
-        //assertTrue(result.isPresent());
         assertEquals(61, result.get());
     }
 }
