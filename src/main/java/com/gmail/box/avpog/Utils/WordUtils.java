@@ -30,5 +30,19 @@ public class WordUtils {
         }
     }
 
-
+    public static Optional<Integer> wordsCount(List<String> words) {
+        int count = 0;
+        if (words == null || words.isEmpty()) {
+            return Optional.empty();
+        }
+        for (String word : words) {
+            if (word == null || word == "") {
+                continue;
+            } else {
+                count++;
+            }
+        }
+        return Optional.of(count);
+    }
 }
+
